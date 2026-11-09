@@ -66,10 +66,10 @@ def _subprocess_env(**updates: str | None) -> dict[str, str]:
 # =========================================================
 
 llm = ChatGroq(
-    model="qwen/qwen3.8-27b",
-    api_key=_require_env("GROQ_API_KEY", GROQ_API_KEY),
-    max_tokens=int(os.getenv("GROQ_MAX_TOKENS", "1500")),
-    max_retries=6,
+    model="openai/gpt-oss-20b",
+    api_key=GROQ_API_KEY,
+    max_tokens=300,
+    max_retries=0,
 )
 
 
@@ -228,6 +228,7 @@ async def get_all_tools() -> None:
                 f"{server_name}: FAILED -> "
                 f"{type(exc).__name__}: {exc}"
             )
+
 
 # =========================================================
 # Tavily MCP
